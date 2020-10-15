@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: black;
+  color: white;
+  font-family: Glacial GlacialIndifference-Regular;
+  src: url(fonts/GlacialIndifference-Regular.otf);
+}
+
+.boxText{
+  font-size: 1em;
+  font-family: "Staatliches", cursive;
+}
+
+.secondtitle {
+    font-family: "Staatliches", cursive;
+    font-size: 3em;
+}
+
+.title {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-style: solid;
+  border-width: 0.5px;
+  display: inline-block;
+  padding: 1%;
+}
+
+.slides {
+  width: 100%;
+  height: 100vh;
+  opacity: 0.3;
+}
+
+.desc {
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  width: 100%;
+  z-index: 100;
+  color: whitesmoke;
+  font-size: 3em;
+}
+
+.listcountry{
+    margin-left:10% ;
+    width: 50%;
+    margin-right: 10%;
+
+}
+
+li{
+    font-family: Glacial GlacialIndifference-Regular;
+    font-size: 2em;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+button {
+    background-color: rgba(255,255,255,0.9);
+    border: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(255,255,255,0.2);
+    color: black;
+    font-size: 14px;
+    padding: 10px 25px;
+
+}
+
+.modal-container {
+background-color:rgba(0,0,0,0);
+position: fixed;
+top: 0;
+right: 0;
+height: 90vh;
+width: 30vw;
+padding: 1%;
+    /* display: none; */
+}
+
+.modal {
+    background-color: rgba(255,255,255,0.1);
+    padding: 30px 50px;
+    width: 600px;
+    max-width: 100%;
+    border-radius: 5px;
+    /* box-shadow: 0 2px 4px rgba(255,255,255,0.2); */
+}
+
+.modal h1 {
+    margin: 0;
+}
+
+.modal p {
+    font-size: 14px;
+}
