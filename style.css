@@ -160,18 +160,3 @@ padding: 1%;
 color: white;
 }
 
-.logo_repo {
-  padding: 1%;
-  padding-top: 5%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8%;
-  animation: rotate 4s linear;
-  animation-iteration-count: infinite;
-}
-
-@keyframes rotate {
-  50% { transform: rotateY(.5turn); }
-  100% { transform: rotateY(1turn); }
-}

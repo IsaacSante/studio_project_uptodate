@@ -9,17 +9,6 @@ var close = document.getElementById("close");
 var cubeCount, material, raycaster;
 var cube = [];
 
-
-// function closeDiv()
-// {
-//     var Temp = document.getElementById("paperuploaded")
-//     if (Temp != null)
-//         Temp.style.display = "none";
-// }
-
-// window.setTimeout("closeDiv();", 5000);
-
-
 var scene = new THREE.Scene();
 var camera = new THREE.PerspectiveCamera(
   75,
@@ -53,28 +42,34 @@ controls.dampingFactor = 0.2;
 
 var mouse = new THREE.Vector2(), INTERSECTED;
 raycaster = new THREE.Raycaster();
-document.addEventListener("mousemove", onDocumentMouseMove, false);
 
-function onDocumentMouseMove(event) {
+document.addEventListener("click", onDocumentMouseClick, false);
+
+function onDocumentMouseClick(event) {
   event.preventDefault();
   mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
   mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
 
+
 var Airtable = require("airtable");
 var base = new Airtable({ apiKey: "keyMKnZBFsdFtC0UX" }).base(
-  'appdpqaDAEWlYBfVv'
+  'app7x77PDdblrFWMR'
 );
 
 cubeCount = 0;
 base("Table 1")
   .select({
-    maxRecords: 100,
+    maxRecords: 50,
     view: "Grid view",
   })
   .eachPage(
     function page(records, fetchNextPage) {
       records.forEach(function (record) {
+
+
+
+
         cubeCount++;
         material = new THREE.MeshBasicMaterial({
           color: Math.random() * 0xffffff,
@@ -87,7 +82,18 @@ base("Table 1")
         cube[cubeCount].rotation.y = Math.random() * 2 * Math.PI;
         cube[cubeCount].rotation.z = Math.random() * 2 * Math.PI;
         cube[cubeCount].userData = record.fields;
+
+        // if (cube[cubeCount].userData.Collecteddcp){
+        //   geometry = new THREE.SphereBufferGeometry(0.3, 32, 16);
+        // }
         scene.add(cube[cubeCount]);
+
+        // if (record.fields.Collecteddcp) {
+        //   geometry = new THREE.SphereBufferGeometry(0.3, 32, 16);
+        //  // element.classList.add('highlighted');
+        // }
+
+
       });
       fetchNextPage();
     },
@@ -110,14 +116,19 @@ function animate() {
      if (INTERSECTED != intersects[0].object) {
      INTERSECTED = intersects[0].object;
       modal_container.classList.add("show");
-      modal_title.innerHTML = INTERSECTED.userData.artid;
-      modal_name.innerHTML = INTERSECTED.userData.aname; 
-      modal_desc.innerHTML = INTERSECTED.userData.artdes;
-      modal_img.src = INTERSECTED.userData.manimg;
-      INTERSECTED.scale.x 
+      console.log(INTERSECTED.userData)
+      modal_title.innerHTML = INTERSECTED.userData.Country;
+      modal_name.innerHTML = INTERSECTED.userData.Total; 
+      modal_desc.innerHTML = INTERSECTED.userData.Before;
+      //  INTERSECTED.scale.x = INTERSECTED.scale.x * 2;
+      //  INTERSECTED.scale.y = INTERSECTED.scale.y * 2;
+      //  INTERSECTED.scale.z = INTERSECTED.scale.z * 2;
     }
   } else {
     INTERSECTED = null;
+    // INTERSECTED.scale.x = INTERSECTED.scale.x / 2;
+    // INTERSECTED.scale.y = INTERSECTED.scale.y / 2;
+    // INTERSECTED.scale.z = INTERSECTED.scale.z / 2;
    }
 
  for (var i = 1, il = cube.length; i < il; i++) {
@@ -125,6 +136,7 @@ function animate() {
     cube[i].position.y = 5 * Math.sin(timer + i * 1.5)
     cube[i].position.z = 5 * Math.tan(timer + i *1.1) 
   }
+
   controls.update();
   renderer.render(scene, camera);
 }
