@@ -20,6 +20,7 @@ var camera = new THREE.PerspectiveCamera(
 var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true});
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor( 0xffffff, 0);
+
 document.body.appendChild(renderer.domElement);
 const color = 0xffffff;
 const intensity = 1.3;
@@ -30,7 +31,8 @@ var light1 = new THREE.PointLight(0xffffff, 4, 50);
 light1.position.set(0,300,500);
 scene.add(light1)
 
-var geometry = new THREE.BoxBufferGeometry( 0.5, 0.5, 0.5 );
+//var geometry = new THREE.BoxBufferGeometry( 0.5, 0.5, 0.5 );
+var geometry = new THREE.SphereBufferGeometry(0.3, 32, 16);
 camera.position.z = 5;
 
 var controls = new OrbitControls(camera, renderer.domElement);
@@ -66,10 +68,6 @@ base("Table 1")
   .eachPage(
     function page(records, fetchNextPage) {
       records.forEach(function (record) {
-
-
-
-
         cubeCount++;
         material = new THREE.MeshBasicMaterial({
           color: Math.random() * 0xffffff,
@@ -82,16 +80,15 @@ base("Table 1")
         cube[cubeCount].rotation.y = Math.random() * 2 * Math.PI;
         cube[cubeCount].rotation.z = Math.random() * 2 * Math.PI;
         cube[cubeCount].userData = record.fields;
-
         // if (cube[cubeCount].userData.Collecteddcp){
         //   geometry = new THREE.SphereBufferGeometry(0.3, 32, 16);
         // }
         scene.add(cube[cubeCount]);
-
-        // if (record.fields.Collecteddcp) {
-        //   geometry = new THREE.SphereBufferGeometry(0.3, 32, 16);
-        //  // element.classList.add('highlighted');
-        // }
+        if (record.fields.Collecteddcp === true) {
+          geometry = new THREE.BoxBufferGeometry( 0.5, 0.5, 0.5 );
+         // geometry = new THREE.SphereBufferGeometry(0.3, 32, 16);
+         // element.classList.add('highlighted');
+        }
 
 
       });
