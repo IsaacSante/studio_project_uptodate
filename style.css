@@ -4,7 +4,7 @@ body {
   list-style: none;
   font-family: Glacial GlacialIndifference-Regular;
   src: url('/fonts/GlacialIndifference-Regular.otf');
-  background: radial-gradient(circle at bottom, navy 0, black 100%);
+  background-color: white;
   color: black;
 }
 
@@ -18,32 +18,6 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  /* animation: introshow 6s linear;
-  animation-iteration-count: once; */
-}
-
-/* @keyframes introshow {
-    0% {
-      opacity: 100%;
-    }
-    100% {
-      opacity: 0%;
-    }
-} */
-
-
-
-
-@keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
 }
 
 .boxText {
@@ -111,10 +85,9 @@ button {
   background-color: rgba(0, 0, 0, 0);
   position: fixed;
   top: 0;
-  right: 0;
-  height: 95vh;
+  left:0;
+  height: 100vh;
   width: 30vw;
-  padding: 1%;
   opacity: 0;
   pointer-events: none;
 }
@@ -125,11 +98,11 @@ button {
 }
 
 .modal {
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(255, 255, 255);
   padding: 30px 50px;
   width: 600px;
   max-width: 100%;
-  border-radius: 5px;
+  height: 100vh;
 }
 
 .modal h1 {
