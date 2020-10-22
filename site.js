@@ -169,7 +169,7 @@ function animate() {
     cube[i].position.z = 5 * Math.tan(timer + i * 1.1);
   }
   controls.update();
-  TWEEN.update();
+  // TWEEN.update();
   renderer.render(scene, camera);
 }
 
